@@ -14,26 +14,30 @@ function setup() {
   fixedrect = createSprite(600,200,60,20);
   fixedrect.shapeColor = "black";
   fixedrect.debug = true;
+  movingrect.velocityX = 3;
+  fixedrect.velocityX = -3;
+
 }
 
 function draw() {
   //to clear the screen and give it color
   background("powderblue");  
 
-  movingrect.x= mouseX;
-  movingrect.y = mouseY;
+  
   
   if (movingrect.x - fixedrect.x < movingrect.width/2 + fixedrect.width/2
-    && fixedrect.x - movingrect.x < movingrect.width/2 + fixedrect.width/2 && 
-    movingrect.y - fixedrect.y < movingrect.height/2 + fixedrect.width/2 &&
-    fixedrect.y - movingrect.y < movingrect.height/2 + fixedrect.height/2){
-    movingrect.shapeColor = "white";
-    fixedrect.shapeColor = "white";
+    && fixedrect.x - movingrect.x < movingrect.width/2 + fixedrect.width/2 
+    ){
+
+
+    movingrect.velocityX = movingrect.velocityX * (-1);
+    fixedrect.velocityX = fixedrect.velocityX * (-1);
   }
-  else
+  if (movingrect.y - fixedrect.y < movingrect.height/2 + fixedrect.width/2 &&
+    fixedrect.y - movingrect.y < movingrect.height/2 + fixedrect.height/2)
    {
-    movingrect.shapeColor = "black";
-    fixedrect.shapeColor = "black";
+    movingrect.velocityY = movingrect.velocityY * (-1);
+    fixedrect.velocityY = fixedrect.velocityY * (-1);
   }
 
   
